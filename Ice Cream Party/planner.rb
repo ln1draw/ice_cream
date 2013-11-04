@@ -30,5 +30,23 @@ def guest_by_flavor
   @flavor_hash.each { |key, value| puts "#{key} prefers #{value}"}
 end
 
+def flavor_by_guest
+  guest_hash = {}
+  flavor_array = []
+
+  @flavor_hash.each do |name, flavor|
+
+    if flavor_array.include?(flavor)
+      guest_hash[flavor].push(name)
+    else
+      guest_hash[flavor] = [name]
+      flavor_array.push(flavor)
+    end
+  end
+  
+  guest_hash.each { |key, value| puts "#{key} is preferred by #{value.join(", ")}"}
+end
+
+
 @flavor_hash = make_flavor_hash
 which_report
