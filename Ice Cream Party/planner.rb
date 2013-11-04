@@ -1,6 +1,10 @@
 def enter_flavors
   puts "What's your name: "
-  name = gets.chomp
+  input = gets.chomp
+  if input == 'done'
+    return input
+  end
+  name = input
   puts 'Enter your favorite flavor: '
   flavor = gets.chomp
   return name, flavor
@@ -43,8 +47,8 @@ def flavor_by_guest
       flavor_array.push(flavor)
     end
   end
-  
-  guest_hash.each { |key, value| puts "#{key} is preferred by #{value.join(", ")}"}
+  puts guest_hash
+  guest_hash.keys.sort.each { |key| puts "#{key} is preferred by #{guest_hash[key].join(", ")}"}
 end
 
 
